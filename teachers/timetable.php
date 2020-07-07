@@ -6,28 +6,17 @@ if (isset($_SESSION['login_user_id']) && $_SESSION['user_type'] != 'teacher') {
 if (!isset($_SESSION['login_user_id'])) {
   header('Location:../main/login.php');
 }
-$id = $_SESSION['login_user_id'];
-$q = "SELECT * FROM teacher WHERE id=$id";
-$res = $con->query($q);
-$r = $res->fetch_assoc();
-$class = $r['class'];
 
-$query = "SELECT * FROM timetable WHERE class='$class'";
-$c = $con->query($query);
-$re = $c->fetch_assoc();
-$present = '';
-$notimeTable = false;
-if ($re > 0) {
-  if ($re['approved'] == 0) {
-    $present = "Your time table is waiting for approval from admin";
-  }
-  else{
-    $present = "Your timetable is approved";
-  }
-}
-else{
-  $notimeTable = true;
-}
+$id = $_SESSION['login_user_id'];
+$query = "SELECT * FROM teacher WHERE id=$id";
+$res = $con->query($query);
+$res = $res->fetch_assoc();
+$class = $res['class'];
+
+$q = "SELECT * FROM choosen WHERE class='$class'";
+$result = $con->query($q);
+
+
 
 
 
@@ -36,6 +25,7 @@ else{
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <title>SIS</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,6 +34,7 @@ else{
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
   <style type="text/css">
     body{
     background-color: #e7eae5;
@@ -76,6 +67,9 @@ else{
   </style>
 </head>
 <body>
+
+
+
 <nav class="navbar navbar-expand-md bg-light navbar-light">
         <div class="container">
   <a class="navbar-brand" href="home.php"><b>SIS</b></a>
@@ -127,35 +121,63 @@ else{
 ?>
 <p class="home-card">Welcome Teacher</p>
 <div class="container">
-	<div class="row">
-    <?php if($notimeTable): ?>
-      <h4 class="home-card">No Time Table</h4>
-      <br/>
-      <a href="timetable.php" class="btn btn-primary">Add Time Table</a>
-      <?php else: ?>
-		   <p class="home-card" style="margin:0 auto"><?php echo $present ?></p>
-    <?php if ($re['approved'] == 1): ?>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Class</th>
-            <th>Subject</th>
-            <th>Time</th>
-          </tr> 
-        </thead>
-        <tbody>
-          <tr>
-            <td><?= $re['class'] ?></td>
-            <td><?= $re['subject'] ?></td>
-            <td><?= $re['time'] ?></td>
-          </tr>
-        </tbody>
-      </table>
-    <?php endif; ?>
-    <?php endif; ?>
-
-
-	</div>
+  <div  class="home-card">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4">
+          <label>Class:</label>
+          <input type="text" id="class" name="class" class="form-control" value="<?php echo $class ?>" readonly>
+          <input type="hidden" name="teacher" id="teacher" value="<?php echo $res['name'] ?>">
+        </div>
+        <div class="col-md-4">
+          <label>Subject:</label>
+          <select name="subject" id="subject" class="form-control">
+            <option>Choose Subject...</option>
+            <?php while($row = $result->fetch_assoc()): ?>
+              <option><?= $row['subject_name'] ?></option>
+            <?php endwhile; ?>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label>Time</label>
+          <input type="Time" id="time" name="time" class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <button onclick="addSchedule()" class="btn btn-primary">Add Schedule</button>
+        </div>
+      </div>
+    </div>
+  </div>	<!-- form tag -->
 </div>
+
+ <script type="text/javascript">
+   function addSchedule(){
+    //alert("button clicked");
+    let c = $('#class').val();
+    let subject = $('#subject').val();
+    let time = $('#time').val();
+    let teacher = $('#teacher').val();
+    
+    $.ajax({
+      url:'addSchedule.php',
+      type:'post',
+      dataType:'text',
+      data:{'class':c,'subject':subject,'time':time,'teacher':teacher},
+      beforeSend:function(){
+
+      },
+      success:function(data,status){
+        alert(data);
+      },
+      complete:function(){
+
+      }
+    });
+   }
+ </script>
 </body>
 </html>
