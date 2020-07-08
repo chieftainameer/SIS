@@ -316,6 +316,15 @@ $t_pages = ceil($t_total_rec/$limit);
 
     function approve(r,c,section){
     	alert("working " + r + " " +c + " "+section);
+    	$.ajax({
+    		url:'approve.php',
+    		type:'post',
+    		data:{'roll_or_email':r,'class':c,'section':section},
+    		dataType:'text',
+    		success:function(data,status){
+    			alert(data);
+    		}
+    	});
     }
 
 
