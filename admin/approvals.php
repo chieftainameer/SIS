@@ -99,7 +99,7 @@ $t_pages = ceil($t_total_rec/$limit);
 		      			<?php endwhile; ?>
 		      			<?php else: ?>
 		      				<tr>
-		      					<td colspan="7">No Data to show</td>
+		      					<td colspan="7" style="text-align: center;">No Data to show</td>
 		      				</tr>
 		      			<?php endif; ?>
 	      			 
@@ -153,7 +153,7 @@ $t_pages = ceil($t_total_rec/$limit);
 		      			<?php endwhile; ?>
 		      			<?php else: ?>
 		      				<tr>
-		      					<td colspan="7">No Data to show</td>
+		      					<td colspan="7" style="text-align: center;">No Data to show</td>
 		      				</tr>
 		      			<?php endif; ?>
 	      			 
@@ -206,7 +206,7 @@ $t_pages = ceil($t_total_rec/$limit);
 		      			<?php endwhile; ?>
 		      			<?php else: ?>
 		      				<tr>
-		      					<td colspan="7">No Data to show</td>
+		      					<td colspan="7" style="text-align: center;">No Data to show</td>
 		      				</tr>
 		      			<?php endif; ?>
 	      			 
@@ -323,6 +323,7 @@ $t_pages = ceil($t_total_rec/$limit);
     		dataType:'text',
     		success:function(data,status){
     			alert(data);
+    			location.reload();
     		}
     	});
     }
