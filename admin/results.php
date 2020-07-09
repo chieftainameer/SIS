@@ -27,7 +27,7 @@ include '../functions/database.php';
 <?php include 'navAdmin.php'; ?>
 	
 	<div class="container-fluid">
-		<form class="home-card">
+		<div class="home-card">
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-4">
@@ -69,7 +69,7 @@ include '../functions/database.php';
 					</div>
 					<div class="col-md-4">
 						<label style="text-align: left;">Term:</label>
-						<select name="term" class="form-control">
+						<select name="term" class="form-control" id="term">
 							<option>Choose Term</option>
 							<option>Term 1</option>
 							<option>Term 2</option>
@@ -93,7 +93,7 @@ include '../functions/database.php';
 			   		</div>
 			   	</div>
 			   </div>
-		</form>
+		</div>
 	</div>
 
 
@@ -170,17 +170,25 @@ include '../functions/database.php';
     	let clas = $('#class').val();
     	let roll = $('#roll').val();
     	let sub = $('#subject').val();
-    	let obt_mark = $('#obt-mark').val();
-    	let tot_mark = $('#tot-mark').val();
+    	let obt_mark = parseInt($('#obt-mark').val());
+    	let tot_mark = parseInt($('#tot-mark').val());
+    	let term = $('#term').val();
     	if (roll == 'No data found' || sub == 'No data found' || obt_mark == '' || tot_mark == '') {
     		alert("this form can't be submitted");
+    	}
+    	else if (obt_mark > tot_mark) {
+    		alert("Obtained marks can't be greater than total marks");
     	}
     	else
     	{
     		$.ajax({
     			url:'mark_results.php',
     			type:'post',
-    			data:{'class':clas,'roll':roll,'sub':sub,'obt_mark':obt_mark,'tot_mark':tot_mark}
+    			data:{'class':clas,'roll':roll,'sub':sub,'obt_mark':obt_mark,'tot_mark':tot_mark,'term':term},
+    			dataType:'text',
+    			success:function(data,status){
+    				alert(data);
+    			}
     		});
     	}
     }
