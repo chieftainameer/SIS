@@ -33,12 +33,13 @@
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
 }
+
 .home-card{
   background-color: #f5f5f5;
   padding:30px;
   margin: 5px;
-  text-align: center;
 }
+
 .mytabs{
   padding: 20px;
 }
