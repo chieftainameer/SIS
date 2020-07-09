@@ -25,6 +25,10 @@
         </button>
          <div class="dropdown-menu">
              <a class="dropdown-item" href="profile.php"><i class="fas fa-user"></i> Profile</a>
+             <?php if($_SESSION['user_type'] == 'student'): ?>
+               <a class="dropdown-item" href="chooseSubjects.php"><i class="fas fa-user"></i> Choose Subjects</a>
+             <?php endif; ?>
+
              <a class="dropdown-item" href="../main/logout.php"><i class="fas fa-sign-in-alt"></i> Logout</a>
          </div>
     </div>

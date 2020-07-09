@@ -31,7 +31,7 @@ else{
 // parent count retreival
 $p_rK_q = "SELECT COUNT(*) AS total FROM parents WHERE status=0";
 $p_rk_c = $con->query($p_rK_q);
--$p_rk_r = $p_rk_c->fetch_assoc();
+$p_rk_r = $p_rk_c->fetch_assoc();
 $p_rk_r_final = '';
 if($p_rk_r > 0){
   $p_rk_r_final = $p_rk_r['total'];
