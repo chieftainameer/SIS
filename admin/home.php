@@ -31,7 +31,7 @@ else{
 // parent count retreival
 $p_rK_q = "SELECT COUNT(*) AS total FROM parents WHERE status=0";
 $p_rk_c = $con->query($p_rK_q);
-$p_rk_r = $p_rk_c->fetch_assoc();
+-$p_rk_r = $p_rk_c->fetch_assoc();
 $p_rk_r_final = '';
 if($p_rk_r > 0){
   $p_rk_r_final = $p_rk_r['total'];
@@ -133,7 +133,7 @@ else{
 
   <div class="container-fluid">
         <h3 class="mt-4 text-center">Action Required</h3>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="text-align:center;">
           <div class="col-md-3 home-card">
             <h6>Student Account Approvals Requests </h6>
             <h5 class="text-primary"><?php echo $s_rk_r_final ?></h5>
@@ -147,7 +147,7 @@ else{
             <h5 class="text-primary"><?php echo $t_rk_r_final ?></h5>
           </div>
         </div>
-         <div class="row justify-content-center">
+         <div class="row justify-content-center" style="text-align:center;">
           <div class="col-md-3 home-card">
             <h6>Time Table Approval Requests </h6>
             <h5 class="text-primary"><?php echo $time_rk_r_final ?></h5>
@@ -155,7 +155,7 @@ else{
         </div>
 
         <h3 class="mt-4 text-center">School Statistics</h3>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="text-align:center;">
           <div class="col-md-3 home-card">
             <h6>Student Account Strength </h6>
             <h5 class="text-primary"><?php echo $s_ap_r_final ?></h5>

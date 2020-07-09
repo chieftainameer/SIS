@@ -242,6 +242,13 @@ unset($_SESSION['login_error']);
 			  </label>
 		    </div>
 		</div>
+		<div class="form-group">
+			<div class="row" style="margin-left: 15px;">
+				<div class="col-md-4">
+					<h6>If admin click <a href="../admin/login.php">admin</a></h6>
+				</div>
+			</div>
+		</div>
 	<div class="form-group">
 		<button class="btn btn-primary" style="margin-left: 20%" name="login">Login</button>
 	</div>
