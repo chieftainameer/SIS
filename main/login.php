@@ -146,7 +146,7 @@ if (isset($_POST['login'])) {
          
         }
         .header-txt{
-          margin-bottom: 15px;
+          margin-top: 15px;
           text-align: center;
         }
   </style>
@@ -192,8 +192,7 @@ if (isset($_POST['login'])) {
 <?php 
 if (isset($_SESSION['signed_up'])) {
 ?>
-	<div class="alert alert-success"><?php echo $_SESSION['signed_up'] ?></div>
-	<div>welcome</div>
+	<div class="alert alert-success" style="text-align: center;"><?php echo $_SESSION['signed_up'] ?></div>
 
 <?php
 unset($_SESSION['signed_up']);
@@ -211,6 +210,9 @@ unset($_SESSION['login_error']);
 ?>
 
 <div class="container">
+	<div class="header-txt">
+    <h2>Log in</h2>
+  </div>
 <form class="signin-form login" action="login.php" method="POST">
 	<div style="margin-left: 30%">
 	<div class="form-group">

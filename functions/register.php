@@ -20,7 +20,7 @@ if ($user_type == "student"){ /// this snippet is for student registration
 		$pass = password_hash($pass, PASSWORD_DEFAULT);
 	}
 	else{
-		echo "password doe not match";
+		echo "password does not match";
 	}
 
 	
@@ -37,7 +37,8 @@ if ($user_type == "student"){ /// this snippet is for student registration
 	else{
 		/*$_SESSION['signup_error'] = "Something went wrong try again";
 		header('location:login_page.php');*/
-		echo "<script>alert('error occured');</script>";
+		//echo "<script>alert(".$con->error.");</script>";
+		echo $con->error;
 	}
 }
 

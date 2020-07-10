@@ -57,7 +57,20 @@ if (isset($_SESSION['login_user_id'])) {
   </style>
 </head>
 <body>
-  <?php include '../functions/nav.php'; ?>
+  <nav class="navbar navbar-expand-md bg-light navbar-light">
+        <div class="container">
+  <a class="navbar-brand" href="home.php"><b>SIS</b></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="nav navbar-right ml-auto"> 
+        <li class="nav-item"><a href="login.php" class="nav-link"><i class="fas fa-sign-in-alt"></i> signin</a></li>
+        <li class="nav-item"><a  href="register_layout.php" class="nav-link"><i class="fas fa-user-plus"></i> signup</a></li>
+    </ul>
+  </div>  
+</div>
+</nav>
 
 
 <div class="container login">
@@ -66,6 +79,7 @@ if (isset($_SESSION['login_user_id'])) {
   </div>
 
     <div class="form-group" class="signin-form">
+      <div class="row justify-content-center">
       <div class="col-md-6">
       <label>User Type</label>
       <select class="form-control" name="user-type" id="user-type">
@@ -74,6 +88,7 @@ if (isset($_SESSION['login_user_id'])) {
         <option>Parent</option>
         <option>Teacher</option>
       </select>
+    </div>
     </div>
     </div>
 

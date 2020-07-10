@@ -21,7 +21,7 @@
         <li class="nav-item">
     <div class="dropdown">
         <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-         <?php echo $_SESSION['login_email'] ?>
+         <?php echo $_SESSION['name'] ?>
         </button>
          <div class="dropdown-menu">
              <a class="dropdown-item" href="profile.php"><i class="fas fa-user"></i> Profile</a>
