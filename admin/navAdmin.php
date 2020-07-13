@@ -8,6 +8,7 @@
         <a href="approvals.php" class="list-group-item list-group-item-action bg-primary text-white">Account Approvals</a>
         <a href="results.php" class="list-group-item list-group-item-action text-white bg-primary">Results</a>
         <a href="timetable.php" class="list-group-item list-group-item-action text-white bg-primary">Time Table</a>
+        <a href="subjects.php" class="list-group-item list-group-item-action text-white bg-primary">Subjects</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->

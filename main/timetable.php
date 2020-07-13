@@ -1,13 +1,13 @@
 <?php 
 include '../functions/database.php';
-if (isset($_SESSION['login_user_id']) && $_SESSION['user_type'] != 'teacher') {
+if (isset($_SESSION['login_user_id']) && $_SESSION['user_type'] != 'student') {
   header('Location:../main/login.php');
 }
 if (!isset($_SESSION['login_user_id'])) {
   header('Location:../main/login.php');
 }
 $id = $_SESSION['login_user_id'];
-$q = "SELECT * FROM teacher WHERE id=$id";
+$q = "SELECT * FROM students WHERE id=$id";
 $res = $con->query($q);
 $r = $res->fetch_assoc();
 $class = $r['class'];
@@ -15,7 +15,7 @@ $class = $r['class'];
 $query = "SELECT * FROM timetable WHERE class='$class'";
 $c = $con->query($query);
 $notimeTable = false;
-if ($c->num_rows < 0) {
+if ($c->num_rows < 1) {
   $notimeTable = true;
 }
 
@@ -34,6 +34,8 @@ if ($c->num_rows < 0) {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link href="../css/navAdmin.css" rel="stylesheet">
+
   <style type="text/css">
     body{
     background-color: #e7eae5;
@@ -73,7 +75,7 @@ if ($c->num_rows < 0) {
 <?php } 
 	unset($_SESSION['login_status']);
 ?>
-<p class="home-card">Welcome Teacher</p>
+<p class="home-card">Welcome roll no <?php echo $_SESSION['roll'] ?></p>
 <div class="container">
 	<div class="row">
     <?php if($notimeTable): ?>
@@ -81,24 +83,23 @@ if ($c->num_rows < 0) {
       <br/>
       <a href="timetable.php" class="btn btn-primary text-center">Add Time Table</a>
       <?php else: ?>
-      <table class="table table-hover table-dark" style="margin-top: 20px">
+		   <p class="home-card" style="margin:0 auto">Here is your time table</p>
+      <table class="table table-striped table-dark table-hover" style="margin-top:20px">
         <thead>
-          <tr class="text-center">
+          <tr>
             <th>Class</th>
             <th>Subject</th>
             <th>Time</th>
-            <th>Status</th>
           </tr> 
         </thead>
         <tbody>
           <?php while($re = $c->fetch_assoc()): ?>
-          <tr class="text-center">
+          <tr>
             <td><?= $re['class'] ?></td>
             <td><?= $re['subject'] ?></td>
             <td><?= $re['time'] ?></td>
-            <td><?= $re['approved'] ?></td>
           </tr>
-        <?php endwhile; ?>
+          <?php endwhile; ?>
         </tbody>
       </table>
     <?php endif; ?>
@@ -106,5 +107,12 @@ if ($c->num_rows < 0) {
 
 	</div>
 </div>
+
+<script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
 </body>
 </html>

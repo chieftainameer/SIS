@@ -15,7 +15,10 @@
       </li>
       <li class="nav-item">
         <a class="nav-link " href="results.php"><i class="fas fa-pen"></i>Results</a>
-      </li>    
+      </li>  
+      <li class="nav-item">
+        <a class="nav-link " href="timetable.php"><i class="fas fa-pen"></i>Time Table</a>
+      </li>  
     </ul>
     <ul class="nav navbar-right ml-auto"> 
         <li class="nav-item">
