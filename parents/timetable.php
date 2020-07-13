@@ -1,13 +1,13 @@
 <?php 
 include '../functions/database.php';
-if (isset($_SESSION['login_user_id']) && $_SESSION['user_type'] != 'student') {
+if (isset($_SESSION['login_user_id']) && $_SESSION['user_type'] != 'parent') {
   header('Location:../main/login.php');
 }
 if (!isset($_SESSION['login_user_id'])) {
   header('Location:../main/login.php');
 }
 $id = $_SESSION['login_user_id'];
-$q = "SELECT * FROM students WHERE id=$id";
+$q = "SELECT * FROM parents WHERE id=$id";
 $res = $con->query($q);
 $r = $res->fetch_assoc();
 $class = $r['class'];
@@ -75,7 +75,7 @@ if ($c->num_rows < 1) {
 <?php } 
 	unset($_SESSION['login_status']);
 ?>
-<p class="home-card">Welcome roll no <?php echo $_SESSION['roll'] ?></p>
+<p class="home-card">Welcome Parent of Roll No <?php echo $_SESSION['roll'] ?></p>
 <div class="container">
 	<div class="row">
     <?php if($notimeTable): ?>
@@ -83,7 +83,7 @@ if ($c->num_rows < 1) {
       <br/>
       <a href="timetable.php" class="btn btn-primary text-center">Add Time Table</a>
       <?php else: ?>
-		   <p class="home-card" style="margin:0 auto">Here is your time table</p>
+		   <p class="home-card" style="margin:0 auto">Here is the time table </p>
       <table class="table table-striped table-dark table-hover" style="margin-top:20px">
         <thead>
           <tr>

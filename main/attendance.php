@@ -69,17 +69,17 @@ $r = $r->fetch_assoc();
 
 <p class="home-card">Welcome Roll Number: <?php echo $_SESSION['roll']; ?></p>
 <div class="container">
-  <div class="row">
+  <div class="row text-center">
     <div class="col-md-12">
       <h4>Your Absents in last month are:<?= $r['absents'] ?></h4>
     </div>
   </div>
 	<div class="row">
-		<div class="col-md-4 home-card">
+		<div class="col-md-12 home-card">
 			<h4>Last 5 Days Attendance</h4>
 			<table class="table table-striped">
 				<thead>
-					<tr>
+					<tr class="text-center">
 						<td>Date</td>
 						<td>Status</td>
 					</tr>
@@ -89,7 +89,7 @@ $r = $r->fetch_assoc();
 						extract($row);
 					
 					?>
-						<tr>
+						<tr class="text-center">
 							<td><?= $date ?></td>
 							<td><?= $status ?></td>
 						</tr>

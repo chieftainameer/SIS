@@ -67,7 +67,7 @@ $tot_marks = $es['TOT'];
 <div class="container">
 	<div class="row">
 		
-		<div class="col-md-9 home-card">
+		<div class="col-md-12 home-card">
 			<h4>Previous Results</h4>
 			<table class="table table-striped">
 				<thead>
