@@ -6,6 +6,9 @@ if (isset($_SESSION['login_user_id']) && $_SESSION['user_type'] != 'student') {
 if (!isset($_SESSION['login_user_id'])) {
   header('Location:../main/login.php');
 }
+if ($_SESSION['status'] == 0) {
+  header('Location:not_approved.php');
+}
 $id = $_SESSION['login_user_id'];
 $q = "SELECT * FROM students WHERE id=$id";
 $res = $con->query($q);

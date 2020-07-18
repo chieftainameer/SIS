@@ -6,6 +6,9 @@ if (isset($_SESSION['login_user_id']) && $_SESSION['user_type'] != 'parent') {
 if (!isset($_SESSION['login_user_id'])) {
   header('Location:../main/login.php');
 }
+if ($_SESSION['status'] == 0) {
+  header('Location:../main/not_approved.php');
+}
 $roll = $_SESSION['roll'];
 $r_query = "SELECT * FROM results WHERE roll_num='$roll'";
 $r_res = $con->query($r_query);
