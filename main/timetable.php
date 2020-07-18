@@ -82,9 +82,8 @@ if ($c->num_rows < 1) {
 <div class="container">
 	<div class="row">
     <?php if($notimeTable): ?>
-      <h4 class="home-card">No Time Table</h4>
+      <h4 class="home-card" style="margin:0 auto">No Time Table Yet</h4>
       <br/>
-      <a href="timetable.php" class="btn btn-primary text-center">Add Time Table</a>
       <?php else: ?>
 		   <p class="home-card" style="margin:0 auto">Here is your time table</p>
       <table class="table table-striped table-dark table-hover" style="margin-top:20px">
