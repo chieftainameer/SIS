@@ -9,6 +9,10 @@ if (!isset($_SESSION['login_user_id'])) {
 if ($_SESSION['status'] == 0) {
   header('Location:../main/not_approved.php');
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> cea5e247788ff2bea641a0be1d6fe5e5f94fb975
 $id = $_SESSION['login_user_id'];
 $query = "SELECT * FROM teacher WHERE id=$id";
 $res = $con->query($query);

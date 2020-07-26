@@ -7,7 +7,11 @@ if (!isset($_SESSION['login_user_id'])) {
   header('Location:../main/login.php');
 }
 if ($_SESSION['status'] == 0) {
+<<<<<<< HEAD
   header('Location:../main/not_approved.php');
+=======
+	header('Location:../main/not_approved.php');
+>>>>>>> cea5e247788ff2bea641a0be1d6fe5e5f94fb975
 }
 $roll = $_SESSION['roll_num'];
 $q = "SELECT * FROM parents WHERE student_roll_num='$roll'";

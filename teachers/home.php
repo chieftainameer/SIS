@@ -84,17 +84,23 @@ if ($c->num_rows < 0) {
     <?php if($notimeTable): ?>
       <h4 class="home-card">No Time Table</h4>
       <br/>
-      <a href="timetable.php" class="btn btn-primary">Add Time Table</a>
+      <a href="timetable.php" class="btn btn-primary text-center">Add Time Table</a>
       <?php else: ?>
+<<<<<<< HEAD
       <table class="table table-hover" style="text-align: center;">
+=======
+      <table class="table table-hover table-dark" style="margin-top: 20px">
+>>>>>>> cea5e247788ff2bea641a0be1d6fe5e5f94fb975
         <thead>
-          <tr>
+          <tr class="text-center">
             <th>Class</th>
             <th>Subject</th>
             <th>Time</th>
+            <th>Status</th>
           </tr> 
         </thead>
         <tbody>
+<<<<<<< HEAD
           <?php while($row = $c->fetch_assoc()): ?>
           <tr>
             <td><?= $row['class'] ?></td>
@@ -102,6 +108,16 @@ if ($c->num_rows < 0) {
             <td><?= $row['time'] ?></td>
           </tr>
           <?php endwhile; ?>
+=======
+          <?php while($re = $c->fetch_assoc()): ?>
+          <tr class="text-center">
+            <td><?= $re['class'] ?></td>
+            <td><?= $re['subject'] ?></td>
+            <td><?= $re['time'] ?></td>
+            <td><?= $re['approved'] ?></td>
+          </tr>
+        <?php endwhile; ?>
+>>>>>>> cea5e247788ff2bea641a0be1d6fe5e5f94fb975
         </tbody>
       </table>
     <?php endif; ?>

@@ -9,9 +9,12 @@
         <a href="results.php" class="list-group-item list-group-item-action text-white bg-primary">Results</a>
         <a href="timetable.php" class="list-group-item list-group-item-action text-white bg-primary">Time Table</a>
         <a href="subjects.php" class="list-group-item list-group-item-action text-white bg-primary">Subjects</a>
+<<<<<<< HEAD
         <a href="students.php" class="list-group-item list-group-item-action text-white bg-primary">Students</a>
         <a href="teachers.php" class="list-group-item list-group-item-action text-white bg-primary">Teachers</a>
         <a href="parents.php" class="list-group-item list-group-item-action text-white bg-primary">Parents</a>
+=======
+>>>>>>> cea5e247788ff2bea641a0be1d6fe5e5f94fb975
       </div>
     </div>
     <!-- /#sidebar-wrapper -->

@@ -35,7 +35,11 @@ if ($c->num_rows < 1) {
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<<<<<<< HEAD
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd-/popper.min.js"></script>
+=======
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+>>>>>>> cea5e247788ff2bea641a0be1d6fe5e5f94fb975
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link href="../css/navAdmin.css" rel="stylesheet">
 
@@ -78,6 +82,7 @@ if ($c->num_rows < 1) {
 <?php } 
 	unset($_SESSION['login_status']);
 ?>
+<<<<<<< HEAD
 <p class="home-card">Welcome Parent Of Roll No <?php echo $_SESSION['roll'] ?></p>
 <div class="container">
 	<div class="row">
@@ -87,6 +92,18 @@ if ($c->num_rows < 1) {
       <?php else: ?>
 		   <p class="home-card" style="margin:0 auto">Here is the time table</p>
       <table class="table table-striped table-hover">
+=======
+<p class="home-card">Welcome Parent of Roll No <?php echo $_SESSION['roll'] ?></p>
+<div class="container">
+	<div class="row">
+    <?php if($notimeTable): ?>
+      <h4 class="home-card">No Time Table</h4>
+      <br/>
+      <a href="timetable.php" class="btn btn-primary text-center">Add Time Table</a>
+      <?php else: ?>
+		   <p class="home-card" style="margin:0 auto">Here is the time table </p>
+      <table class="table table-striped table-dark table-hover" style="margin-top:20px">
+>>>>>>> cea5e247788ff2bea641a0be1d6fe5e5f94fb975
         <thead>
           <tr>
             <th>Class</th>

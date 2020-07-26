@@ -30,6 +30,7 @@ if (isset($_POST['login'])) {
 				$_SESSION['name'] = $name;
 				$_SESSION['roll'] = $roll_num;
 				$_SESSION['user_type'] = "student";
+				$_SESSION['status'] = $status;
 				$_SESSION['login_status'] = "Logged in successfully";
 				$_SESSION['login_email'] = $email;
 				header('Location:home.php');
@@ -62,6 +63,7 @@ if (isset($_POST['login'])) {
 				$_SESSION['name'] = $name;
 				$_SESSION['roll_num'] = $student_roll_num;
 				$_SESSION['user_type'] = "parent";
+				$_SESSION['status'] = $status;
 				$_SESSION['login_status'] = "Logged in successfully";
 				$_SESSION['login_email'] = $email;
 				header('Location:../parents/home.php');
@@ -95,6 +97,7 @@ if (isset($_POST['login'])) {
 				$_SESSION['user_type'] = "teacher";
 				$_SESSION['login_status'] = "Logged in successfully";
 				$_SESSION['login_email'] = $email;
+				$_SESSION['status'] = $status;
 				header('Location:../teachers/home.php');
 
 			}

@@ -78,6 +78,7 @@ if ($c->num_rows < 1) {
 <?php } 
 	unset($_SESSION['login_status']);
 ?>
+<<<<<<< HEAD
 <p class="home-card">Welcome Roll No <?php echo $_SESSION['roll'] ?></p>
 <div class="container">
 	<div class="row">
@@ -87,6 +88,17 @@ if ($c->num_rows < 1) {
       <?php else: ?>
 		   <p class="home-card" style="margin:0 auto">Here is your time table</p>
       <table class="table table-striped table-hover" style="text-align: center;">
+=======
+<p class="home-card">Welcome roll no <?php echo $_SESSION['roll'] ?></p>
+<div class="container">
+	<div class="row">
+    <?php if($notimeTable): ?>
+      <h4 class="home-card" style="margin:0 auto">No Time Table Yet</h4>
+      <br/>
+      <?php else: ?>
+		   <p class="home-card" style="margin:0 auto">Here is your time table</p>
+      <table class="table table-striped table-dark table-hover" style="margin-top:20px">
+>>>>>>> cea5e247788ff2bea641a0be1d6fe5e5f94fb975
         <thead>
           <tr>
             <th>Class</th>

@@ -79,12 +79,16 @@ $r = $r->fetch_assoc();
       <h4>Your Absents in last month are:<?= $r['absents'] ?></h4>
     </div>
   </div>
+<<<<<<< HEAD
 	<div class="row justify-content-center">
+=======
+	<div class="row">
+>>>>>>> cea5e247788ff2bea641a0be1d6fe5e5f94fb975
 		<div class="col-md-12 home-card">
 			<h4>Last 5 Days Attendance</h4>
 			<table class="table table-striped">
 				<thead>
-					<tr>
+					<tr class="text-center">
 						<td>Date</td>
 						<td>Status</td>
 					</tr>
@@ -94,7 +98,7 @@ $r = $r->fetch_assoc();
 						extract($row);
 					
 					?>
-						<tr>
+						<tr class="text-center">
 							<td><?= $date ?></td>
 							<td><?= $status ?></td>
 						</tr>

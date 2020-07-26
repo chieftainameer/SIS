@@ -213,11 +213,11 @@ if (isset($_SESSION['login_user_id'])) {
       <div class="row">
         <div class="col-md-6">
           <label for="parent-contact-no">Contact No:</label>
-          <input type="text" class="form-control" id="parent-contact-no" placeholder="Enter First Name" name="parent_contact_no" required>
+          <input type="text" class="form-control" id="parent-contact-no" placeholder="03xxxxxxxxx" name="parent_contact_no" required>
         </div>
         <div class="col-md-6">
           <label for="relation">Relation</label>
-          <input type="text" class="form-control" id="relation" placeholder="Enter First Name" name="relation" required>
+          <input type="text" class="form-control" id="relation" placeholder="Son/Daughter" name="relation" required>
         </div>
       </div>
     </div>
@@ -240,7 +240,7 @@ if (isset($_SESSION['login_user_id'])) {
           </select>        </div>
         <div class="col-md-6">
           <label for="std-roll">Student Roll No:</label>
-          <input type="text" class="form-control" id="std-roll" placeholder="Enter First Name" name="std_roll" required>
+          <input type="text" class="form-control" id="std-roll" placeholder="Roll No" name="std_roll" required>
         </div>
       </div>
     </div>
@@ -268,11 +268,11 @@ if (isset($_SESSION['login_user_id'])) {
       <div class="row">
         <div class="col-md-6">
           <label for="name">Name:</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter First Name" name="name" required>
+          <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required>
         </div>
         <div class="col-md-6">
           <label for="t-email">Email:</label>
-          <input type="text" class="form-control" id="t-email" placeholder="Enter First Name" name="t_email" required>
+          <input type="text" class="form-control" id="t-email" placeholder="Enter email" name="t_email" required>
         </div>
       </div>
     </div>
@@ -281,7 +281,7 @@ if (isset($_SESSION['login_user_id'])) {
       <div class="row">
         <div class="col-md-6">
           <label for="t-contact-no">Contact No:</label>
-          <input type="text" class="form-control" id="t-contact-no" placeholder="Enter First Name" name="t_contact_no" required>
+          <input type="text" class="form-control" id="t-contact-no" placeholder="03xxxxxxxxx" name="t_contact_no" required>
         </div>
         <div class="col-md-6">
          <label for="gender">Class Assigned:</label>
@@ -306,7 +306,7 @@ if (isset($_SESSION['login_user_id'])) {
       <div class="row">
         <div class="col-md-12">
           <label for="qualification">Qualification:</label>
-          <input type="text" class="form-control" id="qualification" placeholder="Enter First Name" name="qualification" required>
+          <input type="text" class="form-control" id="qualification" placeholder="BA/BSC/MA/MSC" name="qualification" required>
         </div>
         
       </div>
