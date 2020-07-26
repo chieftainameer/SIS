@@ -1,7 +1,7 @@
 <?php 
 include '../functions/database.php';
 if (isset($_SESSION['login_user_id']) && $_SESSION['user_type'] != 'parent') {
-	header('Location:../main/login.php');
+  header('Location:../main/login.php');
 }
 if (!isset($_SESSION['login_user_id'])) {
   header('Location:../main/login.php');
@@ -9,17 +9,19 @@ if (!isset($_SESSION['login_user_id'])) {
 if ($_SESSION['status'] == 0) {
   header('Location:../main/not_approved.php');
 }
-$roll = $_SESSION['roll'];
-$query = "SELECT * FROM attendance WHERE roll_num='$roll'";
+$id = $_SESSION['login_user_id'];
+$q = "SELECT * FROM parents WHERE id=$id";
+$res = $con->query($q);
+$r = $res->fetch_assoc();
+$class = $r['class'];
 
-$res = $con->query($query);
-$sub_query = "SELECT * FROM choosen WHERE roll_num='$roll'";
-$sub_res = $con->query($sub_query);
-$a = 1;
+$query = "SELECT * FROM timetable WHERE class='$class'";
+$c = $con->query($query);
+$notimeTable = false;
+if ($c->num_rows < 1) {
+  $notimeTable = true;
+}
 
-$r_query = "SELECT * FROM results WHERE roll_num='$roll'";
-$r_res = $con->query($r_query);
-//$res = $res->fetch_assoc();
 
 
  ?>
@@ -33,7 +35,7 @@ $r_res = $con->query($r_query);
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd-/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <link href="../css/navAdmin.css" rel="stylesheet">
 
@@ -76,81 +78,35 @@ $r_res = $con->query($r_query);
 <?php } 
 	unset($_SESSION['login_status']);
 ?>
-<p class="home-card">Welcome Parent of Roll Number: <?php echo $_SESSION['roll']; ?></p>
+<p class="home-card">Welcome Parent Of Roll No <?php echo $_SESSION['roll'] ?></p>
 <div class="container">
 	<div class="row">
-		<div class="col-md-4 home-card">
-			<h4>Last 5 Days Attendance</h4>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<td>Date</td>
-						<td>Status</td>
-					</tr>
-				</thead>
-				<tbody>
-					<?php while($row = $res->fetch_assoc()){
-						extract($row);
-					
-					?>
-						<tr>
-							<td><?= $date ?></td>
-							<td><?= $status ?></td>
-						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
-		</div>
-		<div class="col-md-3 home-card">
-			<h4>Your Subjects</h4>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<td>Sr No</td>
-						<td>Subject</td>
-					</tr>
-				</thead>
-				<tbody>
-					<?php while($row = $sub_res->fetch_assoc()){
-						extract($row);
-					
-					?>
-						<tr>
-							<td><?= $a ?></td>
-							<td><?= $subject_name ?></td>
-						</tr>
-					<?php
-					 $a++ ;
-				    } ?>
-				</tbody>
-			</table>
+    <?php if($notimeTable): ?>
+      <h4 class="home-card" style="margin:0 auto">No Time Table</h4>
+      <br/>
+      <?php else: ?>
+		   <p class="home-card" style="margin:0 auto">Here is the time table</p>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Subject</th>
+            <th>Time</th>
+          </tr> 
+        </thead>
+        <tbody>
+          <?php while($re = $c->fetch_assoc()): ?>
+          <tr>
+            <td><?= $re['class'] ?></td>
+            <td><?= $re['subject'] ?></td>
+            <td><?= $re['time'] ?></td>
+          </tr>
+          <?php endwhile; ?>
+        </tbody>
+      </table>
+    <?php endif; ?>
 
-		</div>
-		<div class="col-md-4 home-card">
-			<h4>Previous Results</h4>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<td>Subject</td>
-						<td>Obt Marks</td>
-						<td>Total Marks</td>
-					</tr>
-				</thead>
-				<tbody>
-					<?php while($r_row = $r_res->fetch_assoc()){
-						extract($r_row);
-					
-					?>
-						<tr>
-							<td><?= $subject ?></td>
-							<td><?= $obt_marks ?></td>
-							<td><?= $total_marks ?></td>
-						</tr>
-					<?php
-				    } ?>
-				</tbody>
-			</table>
-		</div>
+
 	</div>
 </div>
 

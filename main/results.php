@@ -6,6 +6,9 @@ if (isset($_SESSION['login_user_id']) && $_SESSION['user_type'] != 'student') {
 if (!isset($_SESSION['login_user_id'])) {
   header('Location:../main/login.php');
 }
+if ($_SESSION['status'] == 0) {
+  header('Location:not_approved.php');
+}
 $roll = $_SESSION['roll'];
 $r_query = "SELECT * FROM results WHERE roll_num='$roll'";
 $r_res = $con->query($r_query);
@@ -29,6 +32,8 @@ $tot_marks = $es['TOT'];
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link href="../css/navAdmin.css" rel="stylesheet">
+
   <style type="text/css">
     body{
     background-color: #e7eae5;
@@ -65,9 +70,9 @@ $tot_marks = $es['TOT'];
 
 <p class="home-card">Welcome Roll Number: <?php echo $_SESSION['roll']; ?></p>
 <div class="container">
-	<div class="row">
+	<div class="row justify-content-center">
 		
-		<div class="col-md-9 home-card">
+		<div class="col-md-12 home-card">
 			<h4>Previous Results</h4>
 			<table class="table table-striped">
 				<thead>
@@ -108,5 +113,12 @@ $tot_marks = $es['TOT'];
 		</div>
 	</div>
 </div>
+
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
 </body>
 </html>

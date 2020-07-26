@@ -140,7 +140,7 @@ $t_pages = ceil($t_total_rec/$limit);
 	      			<?php if($p_rk_c->num_rows > 0): ?>
 		      			<?php while($p_row = $p_rk_c->fetch_assoc()): 
  							// print_r($s_rk_c->fetch_assoc());
- 							print_r($row);
+ 							//print_r($row);
 		      				?>
 		      			 	<tr>
 		      			 		<td><?= $p_row['name'] ?></td>

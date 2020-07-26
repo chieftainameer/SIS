@@ -202,7 +202,7 @@ unset($_SESSION['signed_up']);
 <?php
 if (isset($_SESSION['login_error'])) {
 ?>
-	<div class="alert alert-danger"><?php echo $_SESSION['login_error'] ?></div>
+	<div class="alert alert-danger" style="text-align: center;"><?php echo $_SESSION['login_error'] ?></div>
 	
 <?php
 unset($_SESSION['login_error']);

@@ -6,6 +6,9 @@ if (isset($_SESSION['login_user_id']) && $_SESSION['user_type'] != 'teacher') {
 if (!isset($_SESSION['login_user_id'])) {
   header('Location:../main/login.php');
 }
+if ($_SESSION['status'] == 0) {
+  header('Location:../main/not_approved.php');
+}
 $id = $_SESSION['login_user_id'];
 $q = "SELECT * FROM teacher WHERE id=$id";
 $res = $con->query($q);
@@ -14,18 +17,8 @@ $class = $r['class'];
 
 $query = "SELECT * FROM timetable WHERE class='$class'";
 $c = $con->query($query);
-$re = $c->fetch_assoc();
-$present = '';
 $notimeTable = false;
-if ($re > 0) {
-  if ($re['approved'] == 0) {
-    $present = "Your time table is waiting for approval from admin";
-  }
-  else{
-    $present = "Your timetable is approved";
-  }
-}
-else{
+if ($c->num_rows < 0) {
   $notimeTable = true;
 }
 
@@ -44,6 +37,8 @@ else{
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link href="../css/navAdmin.css" rel="stylesheet">
+
   <style type="text/css">
     body{
     background-color: #e7eae5;
@@ -91,9 +86,7 @@ else{
       <br/>
       <a href="timetable.php" class="btn btn-primary">Add Time Table</a>
       <?php else: ?>
-		   <p class="home-card" style="margin:0 auto"><?php echo $present ?></p>
-    <?php if ($re['approved'] == 1): ?>
-      <table class="table table-hover">
+      <table class="table table-hover" style="text-align: center;">
         <thead>
           <tr>
             <th>Class</th>
@@ -102,18 +95,26 @@ else{
           </tr> 
         </thead>
         <tbody>
+          <?php while($row = $c->fetch_assoc()): ?>
           <tr>
-            <td><?= $re['class'] ?></td>
-            <td><?= $re['subject'] ?></td>
-            <td><?= $re['time'] ?></td>
+            <td><?= $row['class'] ?></td>
+            <td><?= $row['subject'] ?></td>
+            <td><?= $row['time'] ?></td>
           </tr>
+          <?php endwhile; ?>
         </tbody>
       </table>
-    <?php endif; ?>
     <?php endif; ?>
 
 
 	</div>
 </div>
+
+<script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
 </body>
 </html>

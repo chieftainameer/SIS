@@ -3,7 +3,11 @@
  * Copyright 2013-2020 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
  */
-
+div.hamburg{
+  width: 40px;
+  height: 7px;
+  background-color: black;
+}
  #wrapper {
     overflow-x: hidden;
  }

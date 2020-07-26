@@ -8,6 +8,10 @@
         <a href="approvals.php" class="list-group-item list-group-item-action bg-primary text-white">Account Approvals</a>
         <a href="results.php" class="list-group-item list-group-item-action text-white bg-primary">Results</a>
         <a href="timetable.php" class="list-group-item list-group-item-action text-white bg-primary">Time Table</a>
+        <a href="subjects.php" class="list-group-item list-group-item-action text-white bg-primary">Subjects</a>
+        <a href="students.php" class="list-group-item list-group-item-action text-white bg-primary">Students</a>
+        <a href="teachers.php" class="list-group-item list-group-item-action text-white bg-primary">Teachers</a>
+        <a href="parents.php" class="list-group-item list-group-item-action text-white bg-primary">Parents</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -16,7 +20,9 @@
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg navbar-light bg-primary border-bottom">
-        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+        <button class="btn btn-primary" id="menu-toggle">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
